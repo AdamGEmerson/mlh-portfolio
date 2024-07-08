@@ -1,0 +1,16 @@
+
+
+    #timeline {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .entry {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .dimmed {
+        color: #999;
+    }

@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% block title %}Timeline{% endblock %}
+
+{% block header %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/timeline.css') }}">
+{% endblock %}
+
+{%  block content %}
+<!-- Form for flask timeline entry -->
+<form id="post-form">
+    <label>
+        Name
+        <input type="text" name="name" placeholder="Name">
+    </label>
+    <label>
+        Email
+        <input type="email" name="email" placeholder="Email">
+    </label>
+    <label>
+        Content
+        <input type="text" name="content" placeholder="What's on your mind?">
+    </label>
+    <input type="submit" value="Post">
+</form>
+
+<!-- Timeline entries -->
+<div id="timeline">
+    {% for entry in entries %}
+        <div class="entry">
+            <h3>{{ entry.name }}</h3>
+            <p class="dimmed">{{ entry.email }}</p>
+            <p>{{ entry.content }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('post-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Form submitted');
+            var form = e.target;
+            var data = new FormData(form);
+            fetch('/api/timeline_post', {
+                method: 'POST',
+                body: data
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                var timeline = document.getElementById('timeline');
+                var entry = document.createElement('div');
+                    entry.className = 'entry';
+                    entry.innerHTML = '<h3>' + data.name + '</h3><p>' + data.content + '</p>';
+                    timeline.insertBefore(entry, timeline.firstChild);
+                    form.reset();
+            });
+        });
+    });
+</script>
+
+{% endblock %}

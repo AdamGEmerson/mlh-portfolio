@@ -37,7 +37,8 @@ nav_menu = [
     {'name': 'Home', 'url': '/'},
     {'name': 'Hobbies', 'url': '/hobbies'},
     {'name': 'Experience', 'url': '/experience'},
-    {'name': 'Education', 'url': '/education'}
+    {'name': 'Education', 'url': '/education'},
+    {'name': 'Timeline', 'url': '/timeline'}
 ]
 
 
@@ -172,3 +173,8 @@ def delete_timeline_post():
     timeline_post.delete_instance()
 
     return model_to_dict(timeline_post)
+
+
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', Title="Timeline", entries=TimelinePosts.select().order_by(TimelinePosts.created_at.desc()), menu=active_menu(nav_menu, '/timeline'))
