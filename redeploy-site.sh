@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Reset tmux and get changes via git
-tmux kill-server
+# Get changes via git
 cd ~/mlh-portfolio
 git fetch && git reset origin/main --hard
 
@@ -9,8 +8,9 @@ git fetch && git reset origin/main --hard
 source python3-virtualenv/bin/activate
 
 pip install -r requirements.txt
+deactivate
 
-# Launch the new tmux session and run the server
-tmux new-session -d -s portfolio "source python3-virtualenv/bin/activate && flask run --host=0.0.0.0"
+# Restart the service
+systemctl restart myportfolio
 
 echo "Done"
