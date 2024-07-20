@@ -22,6 +22,7 @@ else:
 
 print(mydb)
 
+
 class TimelinePosts(Model):
     name = CharField()
     email = CharField()

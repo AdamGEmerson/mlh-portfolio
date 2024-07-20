@@ -1,11 +1,12 @@
 import unittest
 from peewee import *
 
-from app import TimelinePost
+from app import TimelinePosts
 
-MODELS = [TimelinePost]
+MODELS = [TimelinePosts]
 
 test_db = SqliteDatabase(':memory:')
+
 
 class TestTimelinePost(unittest.TestCase):
     def setUp(self):
@@ -18,19 +19,19 @@ class TestTimelinePost(unittest.TestCase):
         test_db.close()
 
     def test_timeline_post(self):
-        first_post = TimelinePost.create(
+        first_post = TimelinePosts.create(
             name='John Doe',
             email='john@example.com',
             content='Hello, world, I\'m John Doe!')
         assert first_post.id == 1
-        second_post = TimelinePost.create(
+        second_post = TimelinePosts.create(
             name='Jane Doe',
             email='jane@example.com',
             content='Hello, world, I\'m Jane Doe!')
         assert second_post.id == 2
 
         # Check that the posts are correct
-        posts = TimelinePost.select()
+        posts = TimelinePosts.select()
         assert posts.count() == 2
         assert posts[0].name == 'John Doe'
         assert posts[0].email == 'john@example.com'
