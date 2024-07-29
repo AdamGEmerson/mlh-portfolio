@@ -22,12 +22,14 @@ class TestTimelinePost(unittest.TestCase):
         first_post = TimelinePosts.create(
             name='John Doe',
             email='john@example.com',
-            content='Hello, world, I\'m John Doe!')
+            content='Hello, world, I\'m John Doe!',
+            created_at='2021-07-01')
         assert first_post.id == 1
         second_post = TimelinePosts.create(
             name='Jane Doe',
             email='jane@example.com',
-            content='Hello, world, I\'m Jane Doe!')
+            content='Hello, world, I\'m Jane Doe!',
+            created_at='2021-07-01 12:00:00')
         assert second_post.id == 2
 
         # Check that the posts are correct
