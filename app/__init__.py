@@ -67,11 +67,11 @@ def index():
 def hobbies():
     hobbies = {
         "Creative Pursuits": [
-            {"name": "Calligraphy", "description": "Practicing beautiful handwriting and letter design.", "image": "./static/img/57810812c56f8f67b043e6c95a802408.jpg"},
-            {"name": "Painting", "description": "Experimenting with colors and techniques on canvas.", "image": "./static/img/painting.jpeg"}
+            {"name": "Graphic Design", "description": "UI and UX Design", "image": "./static/img/graphic-design.jpg"},
+            {"name": "Crosswords", "description": "Staying sharp by solving (and creating) puzzles.", "image": "./static/img/crossword.jpeg"}
         ],
         "Active and Culinary": [
-            {"name": "Basketball", "description": "Playing games and staying active on the court.", "image": "./static/img/MBB-WBB_BallHoop.jpeg"},
+            {"name": "Bouldering/Climbing", "description": "Challenging myself with a good bouldering route.", "image": "./static/img/bouldering.jpeg"},
             {"name": "Cooking/Baking", "description": "Trying out new recipes and baking delicious treats.", "image": "./static/img/cooking.jpg"}
         ],
     }
