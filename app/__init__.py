@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request
+from datetime import datetime as DateTime
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
@@ -150,7 +151,7 @@ def post_time_line_post():
     if not content:
         return "Invalid content", 400
 
-    timeline_post = TimelinePosts.create(name=name, email=email, content=content)
+    timeline_post = TimelinePosts.create(name=name, email=email, content=content, created_at=DateTime.now())
 
     return model_to_dict(timeline_post)
 

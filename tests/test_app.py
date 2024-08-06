@@ -29,7 +29,7 @@ class AppTestCase(unittest.TestCase):
         form_data = {
             "name": "John Doe",
             "email": "john@example.com",
-            "content": "Hello, world, I'm John Doe!"
+            "content": "Hello, world, I'm John Doe!",
         }
 
         # Create a new post with form data
